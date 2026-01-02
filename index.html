@@ -3,116 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Surprise is Coming Noor Jann... ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>For The Brightest Star Of My Life✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Quicksand', sans-serif;
-            background: #050505;
+            background: #020205;
+            font-family: 'Montserrat', sans-serif;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            color: white;
+            color: #fff;
         }
 
-        /* Animated Moving Gradient Background */
-        .bg-animation {
+        /* Deep Romantic Nebula Background */
+        .nebula {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e, #0f0c29);
-            background-size: 400% 400%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(76, 0, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 127, 0.15) 0%, transparent 40%);
             z-index: -2;
-            animation: gradientBG 15s ease infinite;
+            animation: pulse 8s ease-in-out infinite alternate;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.1); opacity: 1; }
         }
 
-        /* Floating Circles/Bubbles Animation */
-        .circles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        .circles li {
-            position: absolute; display: block; list-style: none; width: 20px; height: 20px;
-            background: rgba(255, 255, 255, 0.1); animation: animate 25s linear infinite; bottom: -150px;
+        /* Falling Glitter/Stars */
+        .star {
+            position: absolute; background: white; border-radius: 50%;
+            opacity: 0.5; animation: fall linear infinite;
         }
-        .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
-        .circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
-        .circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
-        .circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
-        .circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
-
-        @keyframes animate {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
-            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        @keyframes fall {
+            to { transform: translateY(100vh); }
         }
 
-        /* Glass Content Box */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 50px 30px; border-radius: 40px;
-            text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            max-width: 90%;
+        .main-content {
+            text-align: center; z-index: 10;
         }
 
-        h1 { font-family: 'Dancing Script', cursive; font-size: 2.8rem; margin-bottom: 10px; color: #ffd700; text-shadow: 0 0 15px rgba(255,215,0,0.5); }
-        p { letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; color: #ccc; margin-bottom: 30px; }
-
-        .timer { display: flex; gap: 15px; justify-content: center; }
-        .time-box {
-            background: rgba(0, 0, 0, 0.3); border-radius: 15px;
-            padding: 15px; min-width: 70px; border-bottom: 3px solid #ffd700;
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            background: linear-gradient(to right, #fff, #ffd700, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
-        .time-box span { display: block; font-size: 1.8rem; font-weight: 700; color: #fff; }
-        .time-box label { font-size: 0.6rem; color: #ffd700; }
 
-        .footer-note { margin-top: 40px; font-size: 0.8rem; color: #888; font-style: italic; }
+        .reveal-text {
+            font-weight: 200; letter-spacing: 5px; font-size: 0.7rem;
+            text-transform: uppercase; color: rgba(255,255,255,0.6);
+            margin-bottom: 50px;
+        }
+
+        /* Modern Aesthetic Timer */
+        .timer-container {
+            display: flex; gap: 25px; justify-content: center;
+        }
+
+        .unit {
+            position: relative;
+        }
+
+        .unit span {
+            display: block; font-size: 2.5rem; font-weight: 700;
+            color: #fff; text-shadow: 0 0 20px rgba(255,215,0,0.3);
+        }
+
+        .unit label {
+            font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;
+            color: #ffd700; font-weight: 400;
+        }
+
+        .unit::after {
+            content: ''; position: absolute; bottom: -10px; left: 50%;
+            transform: translateX(-50%); width: 20px; height: 1px; background: #ffd700;
+        }
+
+        .heart {
+            color: #ff007f; font-size: 1.5rem; margin-top: 50px;
+            animation: beat 1.5s ease infinite;
+        }
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="bg-animation"></div>
-    
-    <ul class="circles">
-        <li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-    </ul>
+    <div class="nebula"></div>
+    <div id="star-field"></div>
 
-    <div class="glass-card">
-        <h1>For Noor Princess...</h1>
-        <p>Something Magical is Unfolding</p>
+    <div class="main-content">
+        <h1>For Noor Princess</h1>
+        <p class="reveal-text">Shhh... something special is waiting for my girl.</p>
 
-        <div class="timer">
-            <div class="time-box"><span id="days">00</span><label>Days</label></div>
-            <div class="time-box"><span id="hours">00</span><label>Hours</label></div>
-            <div class="time-box"><span id="mins">00</span><label>Mins</label></div>
-            <div class="time-box"><span id="secs">00</span><label>Secs</label></div>
+        <div class="timer-container">
+            <div class="unit"><span id="days">00</span><label>Days</label></div>
+            <div class="unit"><span id="hours">00</span><label>Hours</label></div>
+            <div class="unit"><span id="mins">00</span><label>Mins</label></div>
+            <div class="unit"><span id="secs">00</span><label>Secs</label></div>
         </div>
 
-        <div class="footer-note">"15th January — A date that brought the brightest star into this world."</div>
+        <div class="heart">❤️</div>
     </div>
 
     <script>
+        // Star field generation
+        const field = document.getElementById('star-field');
+        for (let i = 0; i < 80; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            const size = Math.random() * 2 + 'px';
+            s.style.width = size; s.style.height = size;
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = '-' + Math.random() * 20 + 'px';
+            s.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            s.style.animationDelay = Math.random() * 5 + 's';
+            field.appendChild(s);
+        }
+
         const target = new Date("January 15, 2026 00:00:00").getTime();
-        function updateTimer() {
+        function update() {
             const now = new Date().getTime();
             const diff = target - now;
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById("days").innerText = d;
-            document.getElementById("hours").innerText = h;
-            document.getElementById("mins").innerText = m;
-            document.getElementById("secs").innerText = s;
+            
+            if (diff <= 0) {
+                // Future Redirection
+                // window.location.href = "birthday.html"; 
+                return;
+            }
+
+            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000);
         }
-        setInterval(updateTimer, 1000);
-        updateTimer();
+        setInterval(update, 1000);
+        update();
     </script>
 </body>
 </html>
