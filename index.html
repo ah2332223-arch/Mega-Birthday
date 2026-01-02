@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise is Coming... ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 100%);
+            color: #ffd700;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container { z-index: 10; padding: 20px; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; margin-bottom: 20px; letter-spacing: 2px; }
+        
+        .timer {
+            display: flex; gap: 20px; justify-content: center; margin-top: 30px;
+        }
+        .time-unit {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 15px; border-radius: 15px; min-width: 80px;
+            backdrop-filter: blur(5px);
+        }
+        .time-unit span { display: block; font-size: 2rem; font-weight: 700; }
+        .time-unit label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #ccc; }
+
+        .message { margin-top: 40px; font-style: italic; color: #aaa; font-size: 0.9rem; }
+
+        /* Floating Stars */
+        .star {
+            position: absolute; background: white; border-radius: 50%;
+            opacity: 0.5; animation: twinkle var(--duration) infinite;
+        }
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+    </style>
+</head>
+<body>
+
+    <div id="stars-container"></div>
+
+    <div class="container" id="countdown-screen">
+        <h1>Something Special for Noor Jaann...</h1>
+        <p>The big surprise unlocks in:</p>
+        
+        <div class="timer">
+            <div class="time-unit"><span id="days">00</span><label>Days</label></div>
+            <div class="time-unit"><span id="hours">00</span><label>Hours</label></div>
+            <div class="time-unit"><span id="mins">00</span><label>Mins</label></div>
+            <div class="time-unit"><span id="secs">00</span><label>Secs</label></div>
+        </div>
+
+        <p class="message">"Patience is a virtue, especially when Princess is involved..." 🌸</p>
+    </div>
+
+    <div id="birthday-content" style="display:none;">
+        <h1>HAPPY BIRTHDAY NOOR FATIMA! 🎂✨</h1>
+        </div>
+
+    <script>
+        // Create Stars
+        const container = document.getElementById('stars-container');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size; star.style.height = size;
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            container.appendChild(star);
+        }
+
+        // Timer Logic
+        const targetDate = new Date("January 15, 2026 00:00:00").getTime();
+
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d < 10 ? "0"+d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0"+h : h;
+            document.getElementById("mins").innerText = m < 10 ? "0"+m : m;
+            document.getElementById("secs").innerText = s < 10 ? "0"+s : s;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown-screen").style.display = "none";
+                document.getElementById("birthday-content").style.display = "block";
+                // Yahan hum redirection bhi laga sakte hain agle pages ke liye
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
