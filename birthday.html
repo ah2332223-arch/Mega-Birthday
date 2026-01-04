@@ -105,7 +105,115 @@
 
         <button class="magic-btn" onclick="manualCelebration()">CLICK FOR MAGIC, MY QUEEN 👑</button>
         <div class="scroll-down">SCROLL FOR MEMORIES ↓</div>
-    </div>
+    </div> 
+    <section class="memory-lane">
+        <h2 class="section-title">Our Memory Lane</h2>
+        
+        <div class="memory-card">
+            <p class="memory-quote">"Har lamha jo humne sath guzara, wo mere liye bohot keemti hai..."</p>
+        </div>
+
+        <div class="memory-card">
+            <span class="memory-tag">The First Hello</span>
+            <h3>Safar ka Aghaz 🚀</h3>
+            <p>Wahan se shuruat hui jahan humne pehli baar baat ki thi. Pata nahi tha ke wo ek "Hello" meri dunya badal dega.</p>
+        </div>
+
+        <div class="memory-card">
+            <span class="memory-tag">Special Bond</span>
+            <h3>Dosti aur Bharosa 🤝</h3>
+            <p>Dheere dheere humne ek dusre ko samjha. Tumhari baatein sunna aur tumhare sath waqt guzarna mera favorite sukoon ban gaya.</p>
+        </div>
+
+        <div class="memory-card">
+            <span class="memory-tag">Current Moment</span>
+            <h3>Tumhari Pehli Birthday Website 🎂</h3>
+            <p>Ye website sirf code nahi hai, ye mere jazbaat hain. Main chahta hoon ke tum har pal khush raho, chahe halaat kaise bhi hon.</p>
+        </div>
+
+        <div class="memory-card dua-card">
+            <span class="memory-tag">Meri Dua ✨</span>
+            <p class="dua-text">"Ya Allah, Noor ko har wo khushi dena jiski wo talabgar hai. Usay hamesha hansta muskurata rakhna aur uski har mushkil ko asan farmana. Ameen."</p>
+        </div>
+    </section>
+
+    <style>
+        /* Memory Lane Styling */
+        .memory-lane {
+            padding: 100px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow-y: visible;
+        }
+
+        body { overflow-y: auto; } /* Scroll enable karne ke liye */
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 50px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            transition: 0.5s;
+            text-align: left;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            border-color: #ffd700;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .memory-tag {
+            display: inline-block;
+            color: #ffd700;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ffd700;
+        }
+
+        .memory-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .memory-card p {
+            font-weight: 300;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .memory-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #ffd700 !important;
+        }
+
+        .dua-card {
+            border: 2px solid #ff007f;
+            background: rgba(255, 0, 127, 0.05);
+        }
+
+        .dua-text {
+            font-size: 1.1rem;
+            text-align: center;
+            line-height: 1.8;
+            color: #fff !important;
+        }
+    </style>
 
    <script>
     // Star Field (Same as Index)
@@ -130,7 +238,7 @@
                 particleCount: 2,
                 angle: 90,
                 spread: 360,
-                origin: { x: Math.random(), y: 0 }, // Upar se niche girenge
+                origin: { x: Math.random(), y: 0 }, // Upar se niche girenge boht sary
                 colors: ['#ffd700', '#ffffff'] // Sirf Gold aur White
             });
             if (Date.now() < end) requestAnimationFrame(frame);
