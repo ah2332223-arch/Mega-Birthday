@@ -45,6 +45,14 @@
         .magic-btn { background: none; border: 1px solid #ffd700; color: #ffd700; padding: 15px 35px; border-radius: 50px; cursor: pointer; font-family: 'Montserrat', sans-serif; letter-spacing: 2px; transition: 0.5s; font-weight: bold; margin-top: 20px; }
         .magic-btn:hover { background: #ffd700; color: #000; box-shadow: 0 0 50px #ffd700; transform: scale(1.05); }
 
+        /* NEW SMOOTH ANIMATION (Jhatka Khatam) */
+        @keyframes smoothFloat {
+            0% { transform: translateY(0); opacity: 0.4; }
+            50% { transform: translateY(12px); opacity: 0.8; }
+            100% { transform: translateY(0); opacity: 0.4; }
+        }
+        .scroll-hint { margin-top: 50px; font-size: 0.8rem; color: rgba(255,215,0,0.6); animation: smoothFloat 3s ease-in-out infinite; }
+
         /* Memory Lane Cards */
         .memory-lane { padding: 80px 20px; max-width: 650px; margin: 0 auto; text-align: left; }
         .section-title { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: #ffd700; margin-bottom: 60px; text-shadow: 0 0 20px rgba(255,215,0,0.5); text-align: center; }
@@ -59,7 +67,7 @@
     <div id="star-field"></div>
     
     <div id="music-equalizer" onclick="toggleMusic()">
-        <div class="bar"></div><div class="bar"></div><div class="bar)</div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
     </div>
 
     <section class="hero">
@@ -67,7 +75,7 @@
         <h1>Happy Birthday, Noorayyy!</h1>
         <p style="letter-spacing: 5px; font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top:10px;">The Queen of my heart, finally it's your day</p>
         <button class="magic-btn" onclick="manualCelebration()">CLICK FOR MAGIC, MY QUEEN 👑</button>
-        <div style="margin-top: 50px; font-size: 0.8rem; color: rgba(255,215,0,0.6); animation: bounce 2s infinite;">SCROLL FOR MEMORIES ↓</div>
+        <div class="scroll-hint">SCROLL FOR MEMORIES ↓</div>
     </section>
 
     <section class="memory-lane">
@@ -112,7 +120,6 @@
         }
 
         function manualCelebration() {
-            // ORIGINAL MEGA INTENSITY
             var count = 200;
             var defaults = { origin: { y: 0.7 } };
             function fire(particleRatio, opts) {
