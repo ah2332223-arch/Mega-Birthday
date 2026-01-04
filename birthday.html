@@ -12,44 +12,35 @@
         body {
             background: #020205;
             font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto; /* Scroll enabled for memory lane */
+        }
+
+        /* Background Effects */
+        .nebula {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(76, 0, 255, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 0, 127, 0.15) 0%, transparent 40%);
+            z-index: -2;
+            animation: pulse 8s ease-in-out infinite alternate;
+        }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(1.1); opacity: 1; } }
+
+        #star-field { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; animation: fall linear infinite; }
+        @keyframes fall { to { transform: translateY(100vh); } }
+
+        /* Main Hero Section */
+        .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            color: #fff;
-            text-align: center;
-        }
-
-        /* EXACT SAME NEBULA AS INDEX */
-        .nebula {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(76, 0, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(255, 0, 127, 0.15) 0%, transparent 40%);
-            z-index: -2;
-            animation: pulse 8s ease-in-out infinite alternate;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.7; }
-            100% { transform: scale(1.1); opacity: 1; }
-        }
-
-        /* EXACT SAME STARS AS INDEX */
-        #star-field { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .star {
-            position: absolute; background: white; border-radius: 50%;
-            opacity: 0.5; animation: fall linear infinite;
-        }
-        @keyframes fall { to { transform: translateY(100vh); } }
-
-        /* CONTENT ANIMATION */
-        .main-content {
             z-index: 10;
-            animation: fadeIn 3s ease-in;
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         h1 {
             font-family: 'Dancing Script', cursive;
@@ -61,35 +52,55 @@
         }
 
         .princess-img {
-            width: 200px; height: 200px; border-radius: 50%;
+            width: 180px; height: 180px; border-radius: 50%;
             border: 2px solid #ffd700; padding: 5px;
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
             margin-bottom: 20px; object-fit: cover;
             animation: float 4s ease-in-out infinite;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        /* Memory Lane Styling */
+        .memory-lane {
+            padding: 50px 20px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .sub-text {
-            font-weight: 200; letter-spacing: 5px; font-size: 0.8rem;
-            text-transform: uppercase; color: rgba(255,255,255,0.7);
-            margin-bottom: 40px;
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ffd700;
+            margin: 50px 0;
         }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            text-align: left;
+            transition: 0.4s;
+        }
+        .memory-card:hover { border-color: #ffd700; transform: translateY(-5px); }
+
+        .memory-tag { color: #ffd700; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .memory-card h3 { margin-bottom: 10px; color: #fff; }
+        .memory-card p { font-weight: 300; line-height: 1.6; color: rgba(255, 255, 255, 0.8); }
+
+        .dua-card { border: 1px solid #ff007f; background: rgba(255, 0, 127, 0.05); text-align: center; }
 
         .magic-btn {
             background: none; border: 1px solid #ffd700;
             color: #ffd700; padding: 12px 30px; border-radius: 50px;
             cursor: pointer; font-family: 'Montserrat', sans-serif;
-            letter-spacing: 2px; transition: 0.5s;
+            letter-spacing: 2px; transition: 0.5s; margin-top: 20px;
         }
         .magic-btn:hover { background: #ffd700; color: #000; box-shadow: 0 0 30px #ffd700; }
 
-        .scroll-down {
-            margin-top: 40px; font-size: 0.7rem; letter-spacing: 3px;
-            color: rgba(255,215,0,0.5); animation: bounce 2s infinite;
-        }
+        .scroll-hint { margin-top: 30px; font-size: 0.7rem; color: rgba(255,215,0,0.5); animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(5px);} }
     </style>
 </head>
@@ -98,25 +109,25 @@
     <div class="nebula"></div>
     <div id="star-field"></div>
 
-    <div class="main-content">
-        <img src="https://via.placeholder.com/200" class="princess-img" alt="Noor">
-        <h1>Happy Birthday, Noorayyy!!</h1>
-        <p class="sub-text">The Queen of my heart, finally it's your day. </p>
-
+    <section class="hero">
+        <img src="https://via.placeholder.com/180" class="princess-img" alt="Noor">
+        <h1>Happy Birthday, Noorayyy!</h1>
+        <p style="letter-spacing: 5px; font-size: 0.8rem; color: rgba(255,255,255,0.6);">The Queen of my heart, finally it's your day</p>
         <button class="magic-btn" onclick="manualCelebration()">CLICK FOR MAGIC, MY QUEEN 👑</button>
-        <div class="scroll-down">SCROLL FOR MEMORIES ↓</div>
-    </div> 
+        <div class="scroll-hint">SCROLL FOR MEMORIES ↓</div>
+    </section>
+
     <section class="memory-lane">
         <h2 class="section-title">Our Memory Lane</h2>
         
         <div class="memory-card">
-            <p class="memory-quote">"Har lamha jo humne sath guzara, wo mere liye bohot keemti hai..."</p>
+            <p style="font-style: italic; text-align: center; color: #ffd700;">"Har lamha jo humne sath guzara, wo mere liye bohot keemti hai..."</p>
         </div>
 
         <div class="memory-card">
             <span class="memory-tag">The First Hello</span>
-            <h3>Safar ka Aghaz 🚀</h3>
-            <p>Wahan se shuruat hui jahan humne pehli baar baat ki thi. Pata nahi tha ke wo ek "Hello" meri dunya badal dega.</p>
+            <h3>CR GR ban'na 🚀</h3>
+            <p>Wahan se shuruat hui jahan humne pehli baar acha interact kiya tha. Pata nahi tha ke wo ek "CR" ban'na meri dunya badal dega.</p>
         </div>
 
         <div class="memory-card">
@@ -128,153 +139,44 @@
         <div class="memory-card">
             <span class="memory-tag">Current Moment</span>
             <h3>Tumhari Pehli Birthday Website 🎂</h3>
-            <p>Ye website sirf code nahi hai, ye mere jazbaat hain. Main chahta hoon ke tum har pal khush raho, chahe halaat kaise bhi hon.</p>
+            <p>Ye website sirf code nahi hai, ye mere emotions hain. Main chahta hoon ke tum har pal khush raho, chahe halaat kaise bhi hon.</p>
         </div>
 
         <div class="memory-card dua-card">
             <span class="memory-tag">Meri Dua ✨</span>
-            <p class="dua-text">"Ya Allah, Noor ko har wo khushi dena jiski wo talabgar hai. Usay hamesha hansta muskurata rakhna aur uski har mushkil ko asan farmana. Ameen."</p>
+            <p style="font-size: 1.1rem; line-height: 1.8;">"Ya Allah, Noor ko har wo khushi dena jiski wo talabgar hai. Usay hamesha hansta muskurata rakhna aur uski har mushkil ko asan farmana. Ameen."</p>
         </div>
     </section>
 
-    <style>
-        /* Memory Lane Styling */
-        .memory-lane {
-            padding: 100px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            overflow-y: visible;
+    <script>
+        // Stars logic
+        const field = document.getElementById('star-field');
+        for (let i = 0; i < 80; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            const size = Math.random() * 2 + 'px';
+            s.style.width = size; s.style.height = size;
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = '-' + Math.random() * 20 + 'px';
+            s.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            s.style.animationDelay = Math.random() * 5 + 's';
+            field.appendChild(s);
         }
 
-        body { overflow-y: auto; } /* Scroll enable karne ke liye */
-
-        .section-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            color: #ffd700;
-            margin-bottom: 50px;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        function welcomeCelebration() {
+            var end = Date.now() + (2 * 1000);
+            (function frame() {
+                confetti({ particleCount: 2, angle: 90, spread: 360, origin: { x: Math.random(), y: 0 }, colors: ['#ffd700', '#ffffff'] });
+                if (Date.now() < end) requestAnimationFrame(frame);
+            }());
         }
 
-        .memory-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
-            transition: 0.5s;
-            text-align: left;
+        function manualCelebration() {
+            confetti({ particleCount: 150, spread: 70, origin: { x: 0, y: 0.8 }, colors: ['#ff007f', '#ffd700', '#00d4ff'] });
+            confetti({ particleCount: 150, spread: 70, origin: { x: 1, y: 0.8 }, colors: ['#ff007f', '#ffd700', '#00d4ff'] });
         }
 
-        .memory-card:hover {
-            transform: translateY(-10px);
-            border-color: #ffd700;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
-        }
-
-        .memory-tag {
-            display: inline-block;
-            color: #ffd700;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #ffd700;
-        }
-
-        .memory-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            color: #fff;
-        }
-
-        .memory-card p {
-            font-weight: 300;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .memory-quote {
-            font-style: italic;
-            font-size: 1.2rem;
-            text-align: center;
-            color: #ffd700 !important;
-        }
-
-        .dua-card {
-            border: 2px solid #ff007f;
-            background: rgba(255, 0, 127, 0.05);
-        }
-
-        .dua-text {
-            font-size: 1.1rem;
-            text-align: center;
-            line-height: 1.8;
-            color: #fff !important;
-        }
-    </style>
-
-   <script>
-    // Star Field (Same as Index)
-    const field = document.getElementById('star-field');
-    for (let i = 0; i < 80; i++) {
-        const s = document.createElement('div');
-        s.className = 'star';
-        const size = Math.random() * 2 + 'px';
-        s.style.width = size; s.style.height = size;
-        s.style.left = Math.random() * 100 + 'vw';
-        s.style.top = '-' + Math.random() * 20 + 'px';
-        s.style.animationDuration = (Math.random() * 5 + 5) + 's';
-        s.style.animationDelay = Math.random() * 5 + 's';
-        field.appendChild(s);
-    }
-
-    // 1. Welcome Celebration (Golden Rain)
-    function welcomeCelebration() {
-        var end = Date.now() + (2 * 1000);
-        (function frame() {
-            confetti({
-                particleCount: 2,
-                angle: 90,
-                spread: 360,
-                origin: { x: Math.random(), y: 0 }, // Upar se niche girenge boht sary
-                colors: ['#ffd700', '#ffffff'] // Sirf Gold aur White
-            });
-            if (Date.now() < end) requestAnimationFrame(frame);
-        }());
-    }
-
-    // 2. Button Magic (Mega Colorful Burst)
-    function manualCelebration() {
-        // Left side blast
-        confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { x: 0, y: 0.8 },
-            colors: ['#ff007f', '#ffd700', '#00d4ff']
-        });
-        // Right side blast
-        confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { x: 1, y: 0.8 },
-            colors: ['#ff007f', '#ffd700', '#00d4ff']
-        });
-        // Center fireworks
-        setTimeout(() => {
-            confetti({
-                particleCount: 100,
-                gravity: 0.5,
-                scalar: 2,
-                origin: { y: 0.5 },
-                shapes: ['heart'], // Agar browser support kare
-                colors: ['#ff0000']
-            });
-        }, 500);
-    }
-
-    window.onload = welcomeCelebration;
-</script>
+        window.onload = welcomeCelebration;
+    </script>
 </body>
 </html>
