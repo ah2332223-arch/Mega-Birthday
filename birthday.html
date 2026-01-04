@@ -107,39 +107,66 @@
         <div class="scroll-down">SCROLL FOR MEMORIES ↓</div>
     </div>
 
-    <script>
-        // Star Field (Exact replica of Index)
-        const field = document.getElementById('star-field');
-        for (let i = 0; i < 80; i++) {
-            const s = document.createElement('div');
-            s.className = 'star';
-            const size = Math.random() * 2 + 'px';
-            s.style.width = size; s.style.height = size;
-            s.style.left = Math.random() * 100 + 'vw';
-            s.style.top = '-' + Math.random() * 20 + 'px';
-            s.style.animationDuration = (Math.random() * 5 + 5) + 's';
-            s.style.animationDelay = Math.random() * 5 + 's';
-            field.appendChild(s);
-        }
+   <script>
+    // Star Field (Same as Index)
+    const field = document.getElementById('star-field');
+    for (let i = 0; i < 80; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        const size = Math.random() * 2 + 'px';
+        s.style.width = size; s.style.height = size;
+        s.style.left = Math.random() * 100 + 'vw';
+        s.style.top = '-' + Math.random() * 20 + 'px';
+        s.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        s.style.animationDelay = Math.random() * 5 + 's';
+        field.appendChild(s);
+    }
 
-        // Automatic Celebration on Load
-        function fireCrackers() {
-            var duration = 5 * 1000;
-            var end = Date.now() + duration;
+    // 1. Welcome Celebration (Golden Rain)
+    function welcomeCelebration() {
+        var end = Date.now() + (2 * 1000);
+        (function frame() {
+            confetti({
+                particleCount: 2,
+                angle: 90,
+                spread: 360,
+                origin: { x: Math.random(), y: 0 }, // Upar se niche girenge
+                colors: ['#ffd700', '#ffffff'] // Sirf Gold aur White
+            });
+            if (Date.now() < end) requestAnimationFrame(frame);
+        }());
+    }
 
-            (function frame() {
-                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#ffd700', '#ff007f'] });
-                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#ffd700', '#ff007f'] });
-                if (Date.now() < end) { requestAnimationFrame(frame); }
-            }());
-        }
+    // 2. Button Magic (Mega Colorful Burst)
+    function manualCelebration() {
+        // Left side blast
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { x: 0, y: 0.8 },
+            colors: ['#ff007f', '#ffd700', '#00d4ff']
+        });
+        // Right side blast
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { x: 1, y: 0.8 },
+            colors: ['#ff007f', '#ffd700', '#00d4ff']
+        });
+        // Center fireworks
+        setTimeout(() => {
+            confetti({
+                particleCount: 100,
+                gravity: 0.5,
+                scalar: 2,
+                origin: { y: 0.5 },
+                shapes: ['heart'], // Agar browser support kare
+                colors: ['#ff0000']
+            });
+        }, 500);
+    }
 
-        function manualCelebration() {
-            fireCrackers();
-        }
-
-        // Trigger as soon as page loads
-        window.onload = fireCrackers;
-    </script>
+    window.onload = welcomeCelebration;
+</script>
 </body>
 </html>
